@@ -68,6 +68,14 @@
     audio.play();
     key.classList.add('playing'); // returns class name of an element in DOM object. Toggle & remove also exist
   });
+
+  function removeTransition(event) {
+    if (event.propertyName !== 'transform') return; // skip if not a transform
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
